@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.ztp.pojo.Dept" table="dept">
+		<id name="deptno" type="java.lang.Integer">
+			<column name="deptno"></column>
+			
+		</id>
+		
+		<property name="dname" type="java.lang.String">
+			<column name="dname"></column>
+		</property>
+		
+		<property name="loc" type="java.lang.String">
+			<column name="loc"></column>
+		</property>
+		
+		
+		
+		<!-- 一对多映射 -->
+		<!-- cascade:级联操作 -->
+		<!-- inverse:反转，true 控制权交给对方来处理  cascade就失效了-->
+		<set name="emps" table="emp" inverse="true">
+			<key column="deptno"></key>
+			<one-to-many class="com.ztp.pojo.Emp"/>
+		</set>
+			
+	</class>
+</hibernate-mapping>

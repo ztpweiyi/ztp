@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.ztp.pojo.Student" table="t_stu">
+		<id name="id" type="java.lang.Integer">
+			<column name="id"></column>
+			<!--主键生成策略 -->
+			<generator class="identity"></generator>
+		</id>
+		
+		<property name="name" type="java.lang.String" column="name"></property>
+		<property name="studentId" type="java.lang.Integer" column="studentId"></property>
+		<property name="age" type="java.lang.Integer" column="age"></property>
+		
+		
+		
+		<!-- 多对多映射 -->
+		<!-- stu_course:中间表 -->
+		
+		<set name="courses" table="stu_course" inverse="false" cascade="save-update">
+			<key column="stu_id"></key>
+			<many-to-many class="com.ztp.pojo.Course" column="course_id"></many-to-many>
+		</set>
+			
+	</class>
+</hibernate-mapping>

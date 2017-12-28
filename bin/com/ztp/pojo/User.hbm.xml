@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.ztp.pojo.User" table="t_user">
+	<cache usage="read-only"/>
+	
+		<id name="id" type="java.lang.Integer" unsaved-value="0">
+			<column name="id"></column>
+			<!--主键生成策略 -->
+			<generator class="identity"></generator>
+		</id>
+		
+		<property name="userName" type="java.lang.String" not-null="true">
+			<column name="userName"></column>
+		</property>
+		
+		<property name="passWord" type="java.lang.String">
+			<column name="pwd"></column>
+		</property>
+		
+		<property name="roleId" type="java.lang.Integer">
+			<column name="roleId"></column>
+		</property>
+	</class>
+</hibernate-mapping>
